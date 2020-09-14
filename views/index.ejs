@@ -1,0 +1,33 @@
+<style>
+    h1 {
+        color: red;
+    }
+    h1 > i {
+        color: gold;
+    }
+    th {
+        color: wheat;
+    }
+</style>
+<h1 class="text-center mt-2"> <i class="fas fa-link"></i> URL SHORTENER </h1>
+<form class="text-center mt-4" action="/url" method="POST">
+    <input type="url" name="url" id="url" class="form-control" placeholder="Enter the URL" required />
+    <button type="submit" class="btn btn-info btn-lg mt-2"> Shorten </button> 
+</form>
+<div class="table-responsive mt-4">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+        <th>URL</th>
+        <th>Short URL</th>
+        </tr>
+        </thead>
+    
+    <% links.forEach(function(link) {  %>
+        <tr>
+            <td> <a href="<%= link.inputURL %>"> <%= link.inputURL %> </a> </td>
+            <td> <a href="<%= link.shortURL %>"> <%= link.shortURL %> </a> </td>
+        </tr>
+    <% }) %>
+    </table>
+</div>
