@@ -7,8 +7,13 @@ const Link = require('./models/Link');
 
 const app = express();
 
+//Dotenv config
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 //DB Config
-const db = "mongodb+srv://koyilnet:KoyilNet123@cluster0-gsth2.mongodb.net/url_shortener?retryWrites=true&w=majority";
+const db = process.env.MONGO_URI;
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(function() {
